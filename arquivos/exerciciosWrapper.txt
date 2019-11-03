@@ -1,0 +1,17 @@
+# Wrapper clases:
+
+1 - Crie uma função que recebe uma classe Character (pressupondo que seja uma letra maiúscula) e converta a mesma para minúscula.
+    Não utilize recursos da String (veremos posteriormente)
+    OBS: Tabela ASCII: https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/ASCII-Table.svg/738px-ASCII-Table.svg.png
+
+# String:
+
+2 - Crie uma função que trunca o texto informado nos primeiros 140 caracteres. Caso ultrapasse utilize reticências.
+Explore os métodos length(), .substring() e concat() da String para facilitar o trabalho
+
+# Unboxing:
+
+3 -Converta o seguinte array de números nas suas respectivas letras do ASCII e transforme em um Array de Strings. Após, imprima o texto resultante. 
+    int[] numeros = {86, 99, 32, 101, 104, 32, 100, 101, 109, 97, 105, 115, 33, 32, 83, 117, 97, 32, 114, 101, 115, 111, 108, 117, 99, 97, 111, 32, 101, 115, 116, 97, 104, 32, 99, 111, 114, 114, 101, 116, 97, 33, 33, 32, 78, 97, 111, 32, 99, 111, 110, 116, 101, 32, 97, 111, 115, 32, 100, 101, 109, 97, 105, 115, 32, 58, 41};
+
+
