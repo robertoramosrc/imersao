@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 public class ExemploColecoes {
 
     public static void main(String args[]){
-        //listaSimples();
-        //iteracaoArrayList();
-        //listaSemDuplicacaoes();
-        //mapSimples();
+        listaSimples();
+        iteracaoArrayList();
+        listaSemDuplicacaoes();
+        mapSimples();
 
     }
 
