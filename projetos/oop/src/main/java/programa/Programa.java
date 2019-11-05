@@ -1,22 +1,33 @@
 package programa;
 
-import tela.Tela;
+import dao.BancoDao;
+import tela.TelaConta;
+import tela.TelaCorrentista;
+
 import java.util.Scanner;
 
 public class Programa {
 
+    private static BancoDao bancoDao = new BancoDao();
+    private static Scanner scanner = new Scanner(System.in);
+
+    private static TelaCorrentista telaCorrentista;
+    private static TelaConta telaConta;
+
     public static void main(String[] args) {
+
+        telaCorrentista = new TelaCorrentista(bancoDao, scanner);
+        telaConta = new TelaConta(bancoDao, scanner);
 
         boolean pararPrograma;
 
         do {
-           pararPrograma = exibeMenuPrincipal();
+            pararPrograma = exibeMenuPrincipal();
         } while (!pararPrograma);
-
 
     }
 
-    public static boolean exibeMenuPrincipal(){
+    public static boolean exibeMenuPrincipal() {
 
         System.out.println(">> Menu Principal");
         System.out.println("Escolha uma opção: ");
@@ -25,19 +36,21 @@ public class Programa {
         System.out.println(" 3 - Movimento ");
         System.out.println(" 0 - Out ");
 
+        int opcao = scanner.nextInt();
 
-        int opcao = new Scanner(System.in).nextInt();
+        if (opcao == 1) {
 
-        if(opcao == 1){
+            telaCorrentista.exibeMenu();
 
-            Tela tela = new Tela();
-            tela.imprime();
+        } else if (opcao == 2) {
+            telaConta.exibeMenu();
 
-        }else if(opcao == 0){
-            return false;
+        } else if (opcao == 0) {
+            return true;
         }
 
-        return true;
+
+        return false;
     }
 
 }

@@ -10,4 +10,27 @@ public class Conta {
 
     private List<Movimento> movimentos;
 
+    public Conta(int agencia, int numero) {
+        this.agencia = agencia;
+        this.numero = numero;
+    }
+
+    public int getAgencia() {
+        return this.agencia;
+    }
+
+    public int getNumero() {
+        return this.numero;
+    }
+
+    public String getDescricao() {
+        return new StringBuffer().append("Agência: ")
+                .append(this.getAgencia())
+                .append("Número: ")
+                .append(this.getNumero()).toString();
+    }
+
+
 }
+
+
