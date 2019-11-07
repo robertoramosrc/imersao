@@ -3,21 +3,23 @@ package programa;
 import dao.BancoDao;
 import tela.TelaConta;
 import tela.TelaCorrentista;
-
-import java.util.Scanner;
+import util.MasterUsuarioUtil;
+import util.ScannerInterface;
+import util.UsuarioUtil;
 
 public class Programa {
 
     private static BancoDao bancoDao = new BancoDao();
-    private static Scanner scanner = new Scanner(System.in);
+    private static ScannerInterface scanner = new MasterUsuarioUtil();
+    private static UsuarioUtil usuarioUtil = new MasterUsuarioUtil();
 
     private static TelaCorrentista telaCorrentista;
     private static TelaConta telaConta;
 
     public static void main(String[] args) {
 
-        telaCorrentista = new TelaCorrentista(bancoDao, scanner);
-        telaConta = new TelaConta(bancoDao, scanner);
+        telaCorrentista = new TelaCorrentista(bancoDao, scanner, usuarioUtil);
+        telaConta = new TelaConta(bancoDao, scanner, usuarioUtil);
 
         boolean pararPrograma;
 
@@ -29,14 +31,15 @@ public class Programa {
 
     public static boolean exibeMenuPrincipal() {
 
-        System.out.println(">> Menu Principal");
-        System.out.println("Escolha uma opção: ");
-        System.out.println(" 1 - Correntista  ");
-        System.out.println(" 2 - Conta  ");
-        System.out.println(" 3 - Movimento ");
-        System.out.println(" 0 - Out ");
+        usuarioUtil.exibeMensagem(new StringBuffer()
+                .append("\n>> Menu Principal\n")
+                .append("Escolha uma opção:\n")
+                .append(" 1 - Correntista  \n")
+                .append(" 2 - Conta  \n")
+                .append(" 3 - Movimento \n")
+                .append(" 0 - Out \n").toString());
 
-        int opcao = scanner.nextInt();
+        int opcao = Integer.parseInt(scanner.nextLine());
 
         if (opcao == 1) {
 
@@ -48,7 +51,6 @@ public class Programa {
         } else if (opcao == 0) {
             return true;
         }
-
 
         return false;
     }

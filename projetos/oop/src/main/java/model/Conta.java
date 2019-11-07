@@ -26,7 +26,7 @@ public class Conta {
     public String getDescricao() {
         return new StringBuffer().append("Agência: ")
                 .append(this.getAgencia())
-                .append("Número: ")
+                .append(" - Número: ")
                 .append(this.getNumero()).toString();
     }
 

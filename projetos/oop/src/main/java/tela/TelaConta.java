@@ -1,30 +1,34 @@
 package tela;
 
 import model.Conta;
-import model.Correntista;
 import dao.BancoDao;
+import util.ScannerInterface;
+import util.UsuarioUtil;
 
 import java.util.List;
-import java.util.Scanner;
 
-public class TelaConta {
+public class TelaConta implements Tela {
 
     private BancoDao bancoDao;
-    private Scanner scanner;
+    private ScannerInterface scanner;
+    private UsuarioUtil usuarioUtil;
 
-    public TelaConta(BancoDao bancoDao, Scanner scanner) {
+    public TelaConta(BancoDao bancoDao, ScannerInterface scanner, UsuarioUtil usuarioUtil) {
         this.bancoDao = bancoDao;
         this.scanner = scanner;
+        this.usuarioUtil = usuarioUtil;
     }
 
+    @Override
     public void exibeMenu() {
 
-        System.out.println("Menu Conta");
-        System.out.println("Escolha uma opção: ");
-        System.out.println(" 1 - Criar Conta");
-        System.out.println(" 2 - Listar Contas");
+        this.usuarioUtil.exibeMensagem(new StringBuffer()
+                .append("\nMenu Conta\n")
+                .append("Escolha uma opção:\n")
+                .append(" 1 - Criar Conta\n")
+                .append(" 2 - Listar Contas\n").toString());
 
-        int opcao = this.scanner.nextInt();
+        int opcao = Integer.parseInt(this.scanner.nextLine());
 
         if (opcao == 1) {
             exibeMenuCriarConta();
@@ -37,20 +41,20 @@ public class TelaConta {
 
     private void exibeMenuListaContas() {
         List<Conta> lista = this.bancoDao.listarContas();
-        System.out.println("Lista de Contas: ");
+        this.usuarioUtil.exibeMensagem("Lista de Contas: ");
 
         for (Conta conta : lista) {
-            System.out.println(conta.getDescricao());
+            this.usuarioUtil.exibeMensagem(conta.getDescricao());
         }
     }
 
     private void exibeMenuCriarConta() {
 
-        System.out.println("Informe o número da agência:");
-        int agencia = this.scanner.nextInt();
+        this.usuarioUtil.exibeMensagem("Informe o número da agência:");
+        int agencia = Integer.parseInt(this.scanner.nextLine());;
 
-        System.out.println("Informe o número da conta:");
-        int numero = this.scanner.nextInt();
+        this.usuarioUtil.exibeMensagem("Informe o número da conta:");
+        int numero = Integer.parseInt(this.scanner.nextLine());;
 
         this.bancoDao.adicionarConta(new Conta(agencia, numero));
 
