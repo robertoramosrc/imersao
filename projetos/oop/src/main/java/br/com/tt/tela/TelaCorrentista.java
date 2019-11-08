@@ -1,15 +1,14 @@
-package tela;
+package br.com.tt.tela;
 
-import dao.BancoDao;
-import model.Conta;
-import model.Correntista;
-import model.CorrentistaPf;
-import model.CorrentistaPj;
-import util.ScannerInterface;
-import util.UsuarioUtil;
+import br.com.tt.dao.BancoDao;
+import br.com.tt.model.Conta;
+import br.com.tt.model.Correntista;
+import br.com.tt.model.CorrentistaPf;
+import br.com.tt.model.CorrentistaPj;
+import br.com.tt.util.ScannerInterface;
+import br.com.tt.util.UsuarioUtil;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class TelaCorrentista implements Tela {
 

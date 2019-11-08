@@ -1,4 +1,4 @@
-package model;
+package br.com.tt.model;
 
 public class CorrentistaPj extends Correntista {
 

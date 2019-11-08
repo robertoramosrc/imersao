@@ -1,4 +1,4 @@
-package util;
+package br.com.tt.util;
 
 import javax.swing.*;
 

@@ -1,9 +1,9 @@
-package tela;
+package br.com.tt.tela;
 
-import model.Conta;
-import dao.BancoDao;
-import util.ScannerInterface;
-import util.UsuarioUtil;
+import br.com.tt.model.Conta;
+import br.com.tt.dao.BancoDao;
+import br.com.tt.util.ScannerInterface;
+import br.com.tt.util.UsuarioUtil;
 
 import java.util.List;
 

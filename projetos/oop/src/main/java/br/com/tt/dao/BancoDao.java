@@ -1,7 +1,7 @@
-package dao;
+package br.com.tt.dao;
 
-import model.Conta;
-import model.Correntista;
+import br.com.tt.model.Conta;
+import br.com.tt.model.Correntista;
 
 import java.util.List;
 

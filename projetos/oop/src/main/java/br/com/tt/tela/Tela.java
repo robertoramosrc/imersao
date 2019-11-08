@@ -1,4 +1,4 @@
-package tela;
+package br.com.tt.tela;
 
 public interface Tela {
 

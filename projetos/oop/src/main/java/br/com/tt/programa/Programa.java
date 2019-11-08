@@ -1,11 +1,11 @@
-package programa;
+package br.com.tt.programa;
 
-import dao.BancoDao;
-import tela.TelaConta;
-import tela.TelaCorrentista;
-import util.MasterUsuarioUtil;
-import util.ScannerInterface;
-import util.UsuarioUtil;
+import br.com.tt.dao.BancoDao;
+import br.com.tt.tela.TelaConta;
+import br.com.tt.tela.TelaCorrentista;
+import br.com.tt.util.MasterUsuarioUtil;
+import br.com.tt.util.ScannerInterface;
+import br.com.tt.util.UsuarioUtil;
 
 public class Programa {
 

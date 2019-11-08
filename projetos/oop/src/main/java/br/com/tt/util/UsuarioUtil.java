@@ -1,4 +1,4 @@
-package util;
+package br.com.tt.util;
 
 public abstract class UsuarioUtil {
 
