@@ -35,13 +35,13 @@ public abstract class Correntista {
         if (conta == null) {
             return "Nome: ".concat(this.getNome());
         } else {
-            return new StringBuffer().append("Nome: ")
+            return new StringBuffer()
+                    .append("Nome: ")
                     .append(this.getNome())
-                    .append(" Conta: ")
+                    .append(" Conta: [")
                     .append(this.getConta().getDescricao())
+                    .append("]")
                     .toString();
         }
-
     }
-
 }

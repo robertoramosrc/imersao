@@ -32,18 +32,29 @@ public class TelaCorrentista implements Tela {
                 .append("\nMenu Correntista\n")
                 .append("Escolha uma opção:\n")
                 .append(" 1 - Criar Correntista Pessoa Jurídica\n")
-                .append(" 2 - Criar Correntista Pessoa Física\n")
-                .append(" 3 - Listar Correntistas\n").toString());
+                .append(" 2 - Listar Correntistas\n").toString());
 
         int opcao = Integer.parseInt(this.scanner.nextLine());
 
         if (opcao == 1) {
-            exibeMenuCriarCorrentista(new CorrentistaPf());
+            usuarioUtil.exibeMensagem("Escolha um tipo de conta: PF / PJ");
+            String tipoConta =this.scanner.nextLine();
+
+            if("PF".equalsIgnoreCase(tipoConta)) {
+
+                this.usuarioUtil.exibeMensagem("Informe um tipo de documento: ");
+                String tipo = this.scanner.nextLine();
+
+                this.usuarioUtil.exibeMensagem("Informe o número do documento: ");
+                String doc = this.scanner.nextLine();
+
+                exibeMenuCriarCorrentista(new CorrentistaPf(tipo, doc));
+
+            }else if("PJ".equalsIgnoreCase(tipoConta)){
+                exibeMenuCriarCorrentista(new CorrentistaPj());
+            }
 
         } else if (opcao == 2) {
-            exibeMenuCriarCorrentista(new CorrentistaPj());
-
-        } else if (opcao == 3) {
             exibeMenuListaCorrentista();
         }
 
@@ -65,7 +76,6 @@ public class TelaCorrentista implements Tela {
                     .append(contas.get(opcaoConta).getDescricao())
                     .toString());
         }
-
 
         int numero = Integer.parseInt(this.scanner.nextLine());
 
