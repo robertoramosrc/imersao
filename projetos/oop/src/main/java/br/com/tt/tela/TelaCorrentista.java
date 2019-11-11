@@ -28,27 +28,22 @@ public class TelaCorrentista implements Tela {
 
     @Override
     public void exibeMenu() {
-        this.usuarioUtil.exibeMensagem(new StringBuffer()
+        int opcao = this.usuarioUtil.exibeMensagem(new StringBuffer()
                 .append("\nMenu Correntista\n")
                 .append("Escolha uma opção:\n")
                 .append(" 1 - Criar Correntista Pessoa Jurídica\n")
-                .append(" 2 - Listar Correntistas\n").toString());
-
-        int opcao = Integer.parseInt(this.scanner.nextLine());
+                .append(" 2 - Listar Correntistas\n").toString()).nextInt();
 
         if (opcao == 1) {
-            usuarioUtil.exibeMensagem("Escolha um tipo de conta: PF / PJ");
-            String tipoConta =this.scanner.nextLine();
+            String tipoConta =  usuarioUtil.exibeMensagem("Escolha um tipo de conta: PF / PJ").nextLine();
 
             if("PF".equalsIgnoreCase(tipoConta)) {
 
-                this.usuarioUtil.exibeMensagem("Informe um tipo de documento: ");
-                String tipo = this.scanner.nextLine();
-
-                this.usuarioUtil.exibeMensagem("Informe o número do documento: ");
-                String doc = this.scanner.nextLine();
-
-                exibeMenuCriarCorrentista(new CorrentistaPf(tipo, doc));
+                exibeMenuCriarCorrentista(new CorrentistaPf(
+                                            this.usuarioUtil.exibeMensagem("Informe um tipo de documento: ")
+                                                    .nextLine(),
+                                            this.usuarioUtil.exibeMensagem("Informe o número do documento: ")
+                                                    .nextLine()));
 
             }else if("PJ".equalsIgnoreCase(tipoConta)){
                 exibeMenuCriarCorrentista(new CorrentistaPj());
@@ -62,8 +57,7 @@ public class TelaCorrentista implements Tela {
 
     private void exibeMenuCriarCorrentista(Correntista correntista) {
 
-        this.usuarioUtil.exibeMensagem("Informe o nome do correntista: ");
-        String nome = this.scanner.nextLine();
+        String nome = this.usuarioUtil.exibeMensagem("Informe o nome do correntista: ").nextLine();
 
         this.usuarioUtil.exibeMensagem("Informe uma das contas abaixo para associar ao Correntista: ");
 
@@ -86,8 +80,8 @@ public class TelaCorrentista implements Tela {
 
         correntista.setNome(nome);
         correntista.setConta(contas.get(numero));
-
         bancoDao.adicionarCorrentista(correntista);
+
         this.usuarioUtil.exibeMensagem("Correntista cadastrado com sucesso!");
     }
 

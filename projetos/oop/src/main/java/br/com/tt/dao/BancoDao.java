@@ -2,6 +2,7 @@ package br.com.tt.dao;
 
 import br.com.tt.model.Conta;
 import br.com.tt.model.Correntista;
+import br.com.tt.model.Movimento;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class BancoDao {
     private List<Correntista> correntistas;
     private List<Conta> contas;
+    private List<Movimento> movimentos;
 
     public BancoDao() {
         correntistas = new ArrayList<>();
@@ -20,8 +22,16 @@ public class BancoDao {
         correntistas.add(correntista);
     }
 
+    public void adicionarConta(Conta conta) {
+        contas.add(conta);
+    }
+
     public List<Correntista> listarCorrentistas() {
         return correntistas;
+    }
+
+    public List<Conta> listarContas() {
+        return contas;
     }
 
     public Correntista buscarCorrentistaPor(String nome) {
@@ -33,14 +43,6 @@ public class BancoDao {
         throw new IllegalArgumentException("Correntista não encontrado!");
     }
 
-    public void adicionarConta(Conta conta) {
-        contas.add(conta);
-    }
-
-    public List<Conta> listarContas() {
-        return contas;
-    }
-
     public Conta buscarContaPor(Integer agencia, Integer numero) {
         for (Conta conta : contas) {
             if (agencia.equals(conta.getAgencia()) && numero.equals(conta.getNumero())) {
@@ -49,4 +51,5 @@ public class BancoDao {
         }
         throw new IllegalArgumentException("Conta não encontrada!");
     }
+
 }

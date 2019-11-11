@@ -3,7 +3,7 @@ package br.com.tt.model;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Conta {
+public class Conta extends ObjetoBanco {
     private int agencia;
     private int numero;
     private BigDecimal saldo;
@@ -30,7 +30,16 @@ public class Conta {
                 .append(this.getNumero()).toString();
     }
 
+    public void adicionarMovimento(Movimento movimento) {
+        movimentos.add(movimento);
+    }
+
+    public List<Movimento> listarMovimentos() {
+        return movimentos;
+    }
 
 }
+
+
 
 

@@ -1,6 +1,6 @@
 package br.com.tt.model;
 
-public abstract class Correntista {
+public abstract class Correntista extends ObjetoBanco {
     private String nome;
     private Conta conta;
 

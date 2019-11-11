@@ -50,13 +50,11 @@ public class TelaConta implements Tela {
 
     private void exibeMenuCriarConta() {
 
-        this.usuarioUtil.exibeMensagem("Informe o número da agência:");
-        int agencia = Integer.parseInt(this.scanner.nextLine());;
-
-        this.usuarioUtil.exibeMensagem("Informe o número da conta:");
-        int numero = Integer.parseInt(this.scanner.nextLine());;
-
-        this.bancoDao.adicionarConta(new Conta(agencia, numero));
+        this.bancoDao.adicionarConta(new Conta(
+                this.usuarioUtil.exibeMensagem("Informe o número da agência:")
+                    .nextInt(),
+                this.usuarioUtil.exibeMensagem("Informe o número da conta:")
+                    .nextInt()));
 
     }
 }
