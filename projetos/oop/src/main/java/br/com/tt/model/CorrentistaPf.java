@@ -19,7 +19,7 @@ public class CorrentistaPf extends Correntista {
 
         return new StringBuffer()
                 .append(super.getDescricao())
-                .append(" Tipo documento: ")
+                .append(" Tipo Documento: ")
                 .append(this.tipoDocumento)
                 .append(" Documento: ")
                 .append(this.documento).toString();
