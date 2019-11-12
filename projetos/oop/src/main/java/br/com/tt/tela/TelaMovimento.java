@@ -66,8 +66,6 @@ public class TelaMovimento extends TelaBanco {
             this.usuarioUtil.exibeMensagem( "Escolha uma conta:\n");
             this.usuarioUtil.exibeMensagem( "Informe o valor:\n");
 
-
-
         }
 
 

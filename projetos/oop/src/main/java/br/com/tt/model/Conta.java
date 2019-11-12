@@ -24,6 +24,11 @@ public class Conta extends ObjetoBanco {
     }
 
     public String getDescricao() {
+
+        if(this.getAgencia() == 0 || this.getNumero() == 0){
+            return null;
+        };
+
         return new StringBuffer().append("Agência: ")
                 .append(this.getAgencia())
                 .append(" - Número: ")

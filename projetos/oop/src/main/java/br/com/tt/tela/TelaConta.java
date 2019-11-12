@@ -48,7 +48,7 @@ public class TelaConta implements Tela {
         }
     }
 
-    private void exibeMenuCriarConta() {
+    public void exibeMenuCriarConta() {
 
         this.bancoDao.adicionarConta(new Conta(
                 this.usuarioUtil.exibeMensagem("Informe o número da agência:")

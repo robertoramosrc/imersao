@@ -38,7 +38,7 @@ public abstract class Correntista extends ObjetoBanco {
             return new StringBuffer()
                     .append("Nome: ")
                     .append(this.getNome())
-                    .append(" Conta: [")
+                    .append(". Conta: [")
                     .append(this.getConta().getDescricao())
                     .append("]")
                     .toString();

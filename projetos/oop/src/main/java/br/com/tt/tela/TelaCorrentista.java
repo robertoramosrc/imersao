@@ -31,7 +31,7 @@ public class TelaCorrentista implements Tela {
         int opcao = this.usuarioUtil.exibeMensagem(new StringBuffer()
                 .append("\nMenu Correntista\n")
                 .append("Escolha uma opção:\n")
-                .append(" 1 - Criar Correntista Pessoa Jurídica\n")
+                .append(" 1 - Criar Correntista\n")
                 .append(" 2 - Listar Correntistas\n").toString()).nextInt();
 
         if (opcao == 1) {
@@ -59,7 +59,7 @@ public class TelaCorrentista implements Tela {
 
         String nome = this.usuarioUtil.exibeMensagem("Informe o nome do correntista: ").nextLine();
 
-        this.usuarioUtil.exibeMensagem("Informe uma das contas abaixo para associar ao Correntista: ");
+        this.usuarioUtil.exibeMensagem("Escolha uma das contas abaixo para associar ao Correntista: ");
 
         List<Conta> contas = bancoDao.listarContas();
         for (int opcaoConta = 0; opcaoConta < contas.size(); opcaoConta++) {
