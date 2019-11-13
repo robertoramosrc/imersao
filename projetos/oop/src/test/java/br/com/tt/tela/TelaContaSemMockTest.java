@@ -10,7 +10,6 @@ import org.junit.jupiter.api.*;
 class TelaContaSemMockTest {
     BancoDao bancoDao = new BancoDao();
 
-    @Test
     @BeforeEach
     void instanciarContaNumero10Agencia10() {
         TelaConta telaConta = new TelaConta(this.bancoDao, new ScannerDuble(), new UsuarioUtilDuble());
