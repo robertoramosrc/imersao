@@ -28,7 +28,6 @@ class TelaContaSemMockTest {
         Conta contaEsperada = new Conta(10, 10);
         CompareConta compareConta = new CompareConta();
 
-
         Assertions.assertEquals(0,
                 compareConta.compare(contaEsperada,
                         this.bancoDao.listarContas().get(0)));
