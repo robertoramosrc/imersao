@@ -1,4 +1,7 @@
 package br.com.tt.dubles;
 
-public class BancoDaoDuble {
+import br.com.tt.dao.BancoDao;
+
+public class BancoDaoDuble extends BancoDao {
+
 }

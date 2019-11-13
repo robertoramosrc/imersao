@@ -1,10 +1,11 @@
 package br.com.tt.util;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public abstract class UsuarioUtil implements ScannerInterface{
+public abstract class UsuarioUtil implements ScannerInterface {
 
-    public UsuarioUtil exibeMensagem(String mensagem ){
+    public UsuarioUtil exibeMensagem(String mensagem) {
         System.out.println(mensagem);
         return this;
 
