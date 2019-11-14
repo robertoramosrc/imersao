@@ -3,6 +3,7 @@ package br.com.tt.dubles;
 import br.com.tt.util.UsuarioUtil;
 
 public class UsuarioUtilDuble extends UsuarioUtil {
+    private int numeroChamadas = 0;
 
     @Override
     public UsuarioUtil exibeMensagem(String mensagem) {
@@ -15,9 +16,12 @@ public class UsuarioUtilDuble extends UsuarioUtil {
 
     @Override
     public Integer nextInt() {
+
+        numeroChamadas++;
         return 10;
     }
 
-
-
+    public int getNumeroChamadas() {
+        return numeroChamadas;
+    }
 }

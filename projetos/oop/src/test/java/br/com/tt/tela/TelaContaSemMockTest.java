@@ -8,12 +8,21 @@ import br.com.tt.model.Conta;
 import org.junit.jupiter.api.*;
 
 class TelaContaSemMockTest {
-    BancoDao bancoDao = new BancoDao();
+    private BancoDao bancoDao = new BancoDao();
 
     @BeforeEach
     void instanciarContaNumero10Agencia10() {
-        TelaConta telaConta = new TelaConta(this.bancoDao, new ScannerDuble(), new UsuarioUtilDuble());
+
+        UsuarioUtilDuble usuarioUtilDuble = new UsuarioUtilDuble();
+
+        TelaConta telaConta = new TelaConta(this.bancoDao, new ScannerDuble(),
+                usuarioUtilDuble);
+
         telaConta.exibeMenuCriarConta();
+
+        System.out.println("Número de chamadas do nextInt: "
+                .concat(String.valueOf(usuarioUtilDuble.getNumeroChamadas())));
+
     }
 
     @Test
@@ -33,7 +42,6 @@ class TelaContaSemMockTest {
                         this.bancoDao.listarContas().get(0)));
 
     }
-
 
 
 }

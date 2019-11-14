@@ -5,6 +5,7 @@ import br.com.tt.dao.BancoDao;
 import br.com.tt.util.ScannerInterface;
 import br.com.tt.util.UsuarioUtil;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class TelaConta implements Tela {
@@ -36,10 +37,9 @@ public class TelaConta implements Tela {
         } else if (opcao == 2) {
             exibeMenuListaContas();
         }
-
     }
 
-    private void exibeMenuListaContas() {
+    public void exibeMenuListaContas() {
         List<Conta> lista = this.bancoDao.listarContas();
         this.usuarioUtil.exibeMensagem("Lista de Contas: ");
 
