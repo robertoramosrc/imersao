@@ -19,5 +19,5 @@
     <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy-agent:1.9.10" level="project" />
     <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.6" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="br.com.tt.exercicio_banco.main" />
+  <component name="TestModuleProperties" production-module="exercicio_banco.main" />
 </module>

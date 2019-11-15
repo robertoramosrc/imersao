@@ -7,8 +7,9 @@ public class CorrentistaPf extends Correntista {
 
     private static final String TIPO_CONTA = "PF";
 
-    public CorrentistaPf(String tipoDocumento, String documento) {
+    public CorrentistaPf(String nome, Conta conta, String tipoDocumento, String documento) {
 
+        super(nome, conta);
         this.tipoDocumento = tipoDocumento;
         this.documento = documento;
 

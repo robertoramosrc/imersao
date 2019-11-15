@@ -35,19 +35,7 @@ public class TelaCorrentista implements Tela {
                 .append(" 2 - Listar Correntistas\n").toString()).nextInt();
 
         if (opcao == 1) {
-            String tipoConta =  usuarioUtil.exibeMensagem("Escolha um tipo de conta: PF / PJ").nextLine();
-
-            if("PF".equalsIgnoreCase(tipoConta)) {
-
-                exibeMenuCriarCorrentista(new CorrentistaPf(
-                                            this.usuarioUtil.exibeMensagem("Informe um tipo de documento: ")
-                                                    .nextLine(),
-                                            this.usuarioUtil.exibeMensagem("Informe o número do documento: ")
-                                                    .nextLine()));
-
-            }else if("PJ".equalsIgnoreCase(tipoConta)){
-                exibeMenuCriarCorrentista(new CorrentistaPj());
-            }
+            exibeMenuCriarCorrentista();
 
         } else if (opcao == 2) {
             exibeMenuListaCorrentista();
@@ -55,7 +43,7 @@ public class TelaCorrentista implements Tela {
 
     }
 
-    private void exibeMenuCriarCorrentista(Correntista correntista) {
+    private void exibeMenuCriarCorrentista() {
 
         String nome = this.usuarioUtil.exibeMensagem("Informe o nome do correntista: ").nextLine();
 
@@ -71,16 +59,20 @@ public class TelaCorrentista implements Tela {
                     .toString());
         }
 
-        int numero = Integer.parseInt(this.scanner.nextLine());
+        int posicaoEscolhida = Integer.parseInt(this.scanner.nextLine());
+        Conta contaEscolhida = contas.get(posicaoEscolhida);
 
-        if ((contas.get(numero) == null)) {
-            this.usuarioUtil.exibeMensagem("Conta inválida, correntista não cadastrado");
-            return;
+        String tipoConta =  usuarioUtil.exibeMensagem("Escolha um tipo de conta: PF / PJ").nextLine();
+        if("PF".equalsIgnoreCase(tipoConta)) {
+
+            String documento = this.usuarioUtil.exibeMensagem("Informe um tipo de documento: ").nextLine();
+            String numero = this.usuarioUtil.exibeMensagem("Informe o número do documento: ").nextLine();
+
+            bancoDao.adicionarCorrentista(new CorrentistaPf(nome, contaEscolhida,documento, numero));
+
+        }else if("PJ".equalsIgnoreCase(tipoConta)){
+            bancoDao.adicionarCorrentista(new CorrentistaPj(nome, contaEscolhida));
         }
-
-        correntista.setNome(nome);
-        correntista.setConta(contas.get(numero));
-        bancoDao.adicionarCorrentista(correntista);
 
         this.usuarioUtil.exibeMensagem("Correntista cadastrado com sucesso!");
     }
