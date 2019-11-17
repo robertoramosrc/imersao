@@ -62,7 +62,9 @@ public class TelaCorrentista implements Tela {
         int posicaoEscolhida = Integer.parseInt(this.scanner.nextLine());
         Conta contaEscolhida = contas.get(posicaoEscolhida);
 
-        String tipoConta =  usuarioUtil.exibeMensagem("Escolha um tipo de conta: PF / PJ").nextLine();
+        this.usuarioUtil.exibeMensagem("Escolha um tipo de conta: PF / PJ");
+        String tipoConta = this.scanner.nextLine();
+
         if("PF".equalsIgnoreCase(tipoConta)) {
 
             String documento = this.usuarioUtil.exibeMensagem("Informe um tipo de documento: ").nextLine();

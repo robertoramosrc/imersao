@@ -10,10 +10,9 @@ class CorrentistaPfTest {
     @Test
     void deveriaRetoenarDescricaoComDadosDaConta() {
         Conta conta = new Conta(01,1020);
-        CorrentistaPf correntistaPf = new CorrentistaPf("CPF",
-                                                        "00271811706");
-        correntistaPf.setNome("Roberto");
-        correntistaPf.setConta(conta);
+
+        CorrentistaPf correntistaPf = new CorrentistaPf("Roberto Ramos",conta, "CPF",
+                "00271811706");
 
         String esperado =
            "Nome: Roberto. Conta: [Agência: 1 - Número: 1020] Tipo Documento: CPF Documento: 00271811706";
