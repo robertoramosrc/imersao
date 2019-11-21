@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 public class ClienteService {
     private static final int QTD_MINIMA_PARTES_NOME = 2;
+    private static final int QTD_MINIMA_LETRAS_PRIMEIRO_NOME = 2;
     private static final int TAMANHO_CPF = 11;
 
     private List<Cliente> clientes = new ArrayList<Cliente>();
@@ -21,8 +22,40 @@ public class ClienteService {
     public void salvar(Cliente cliente) throws NegocioException {
 
         validaQuantidadePartesNome(cliente);
+        validaQuantidadeLetrasDaParteNome(cliente);
         validaTamanhoCPF(cliente);
         clientes.add(cliente);
+    }
+
+    private void validaQuantidadeLetrasDaParteNome(Cliente cliente) throws NegocioException {
+        int numCarateresValidos = 0;
+
+        if( cliente.getNome() == null ){
+            throw new NegocioException("Nome não informado!");
+        }
+
+        String primeiroNome = cliente
+                .getNome()
+                .trim()
+                .split(" ")[0];
+
+        for( int posicao = 0; posicao < primeiroNome.length(); posicao++){
+
+            char c =  primeiroNome.charAt(posicao);
+
+            if( (c >= 'A' && c<= 'Z') || ( c >= 'a' && c<= 'z') ) {
+
+                numCarateresValidos ++;
+            }
+        }
+
+        if(numCarateresValidos < this.QTD_MINIMA_LETRAS_PRIMEIRO_NOME ){
+            throw new NegocioException(new StringBuffer()
+                        .append("O primeiro nome deve ter no mínimo ")
+                        .append(this.QTD_MINIMA_LETRAS_PRIMEIRO_NOME)
+                        .append(" letras.").toString()) ;
+        }
+
     }
 
     private void validaTamanhoCPF(Cliente cliente) throws NegocioException {

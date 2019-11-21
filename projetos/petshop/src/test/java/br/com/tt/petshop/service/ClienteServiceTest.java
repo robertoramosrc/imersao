@@ -2,40 +2,39 @@ package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.model.Cliente;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ClienteServiceTest {
     private ClienteService clienteService;
-    private Cliente clienteFulanoDaSilva;
 
     @BeforeEach
     public void inicia(){
         clienteService = new ClienteService();
 
-        clienteFulanoDaSilva = new Cliente();
-        clienteFulanoDaSilva.setNome("Fulano da Silva");
-        clienteFulanoDaSilva.setCpf("123.123.123-10");
-
     }
 
     @Test
     public void deveriaSalvarComSucesso() throws NegocioException {
-        this.clienteService.salvar(this.clienteFulanoDaSilva);
+        Cliente novoCliente = new Cliente();
+        novoCliente.setNome("Fulano Silva");
+        novoCliente.setCpf("123.123.123-11");
+
+        this.clienteService.salvar(novoCliente);
 
     }
 
     @Test
     public void deveriaFalharComNomeSobrenome(){
-        String nome = "Fulano";
-
-        Cliente cliente = new Cliente();
-        cliente.setNome(nome);
+        Cliente novoCliente = new Cliente();
+        novoCliente.setCpf("123.123.123-11");
+        novoCliente.setNome("Fulano");
 
         NegocioException e = Assertions.assertThrows(
                 NegocioException.class,
-                ()-> clienteService.salvar(cliente));
+                ()-> clienteService.salvar(novoCliente));
 
         Assertions.assertEquals(
                 "O nome da pessoa deve ser composto de no mínimo 2 partes.",
@@ -45,11 +44,14 @@ class ClienteServiceTest {
 
     @Test
     public void deveriaFalharComCpfMenorQue11(){
+        Cliente novoCliente = new Cliente();
+        novoCliente.setNome("Fulano Silva");
+
         String cpf = "123.123.123-1";
-        this.clienteFulanoDaSilva.setCpf(cpf);
+        novoCliente.setCpf(cpf);
 
         NegocioException e = Assertions.assertThrows(
-                NegocioException.class, () -> this.clienteService.salvar(this.clienteFulanoDaSilva));
+                NegocioException.class, () -> this.clienteService.salvar(novoCliente));
 
         Assertions.assertEquals(
                 "O CPF deve conter 11 números.",
@@ -58,11 +60,14 @@ class ClienteServiceTest {
 
     @Test
     public void deveriaFalharComCpfMaiorQue11(){
+        Cliente novoCliente = new Cliente();
+
+        novoCliente.setNome("Fulano Silva");
         String cpf = "123.123.123-011";
-        this.clienteFulanoDaSilva.setCpf(cpf);
+        novoCliente.setCpf(cpf);
 
         NegocioException e = Assertions.assertThrows(
-                NegocioException.class, () -> this.clienteService.salvar(this.clienteFulanoDaSilva));
+                NegocioException.class, () -> this.clienteService.salvar(novoCliente));
 
         Assertions.assertEquals(
                 "O CPF deve conter 11 números.",
@@ -71,11 +76,14 @@ class ClienteServiceTest {
 
     @Test
     public void deveriaFalharConsiderandoFormatacao(){
+        Cliente novoCliente = new Cliente();
+
+        novoCliente.setNome("Fulano Silva");
         String cpf = "123.123.123";
-        this.clienteFulanoDaSilva.setCpf(cpf);
+        novoCliente.setCpf(cpf);
 
         NegocioException e = Assertions.assertThrows(
-                NegocioException.class, () -> this.clienteService.salvar(this.clienteFulanoDaSilva));
+                NegocioException.class, () -> this.clienteService.salvar(novoCliente));
 
         Assertions.assertEquals(
                 "O CPF deve conter 11 números.",
@@ -86,13 +94,15 @@ class ClienteServiceTest {
     @Test
     public void deveriaFalharNomeComParticularMenorQue2(){
         Cliente novoCliente = new Cliente();
-        novoCliente.setNome("Fulano F Silva");
+
+        novoCliente.setNome("F. d Silva");
+        novoCliente.setCpf("123.123.123-11");
 
         NegocioException e = Assertions.assertThrows(
                 NegocioException.class, () -> this.clienteService.salvar(novoCliente));
 
         Assertions.assertEquals(
-                "Informe seu nome sem abreviações!.",
+                "O primeiro nome deve ter no mínimo 2 letras.",
                 e.getMessage());
 
     }
