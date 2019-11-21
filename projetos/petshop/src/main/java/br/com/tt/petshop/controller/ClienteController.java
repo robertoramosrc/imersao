@@ -1,5 +1,6 @@
 package br.com.tt.petshop.controller;
 
+import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
 import org.springframework.stereotype.Controller;
@@ -20,30 +21,37 @@ public class ClienteController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/admin/clientes")
-    public String listar(Model model){
+    public String listar(Model model) {
 
         model.addAttribute("mensagem", "Bem vindo a lista de clientes da petshop");
-        model.addAttribute("clientes",clienteService.listar());
+        model.addAttribute("clientes", clienteService.listar());
 
         return "inicial";
 
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/admin/clientes/criar")
-    public String clienteCriar(Model model){
+    public String clienteCriar(Model model) {
 
         model.addAttribute("novoCliente", new Cliente());
         return "cliente_criar";
 
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/admin/clientes/criar")
-    public String criarNovo(Model model){
-        Cliente cliente = (Cliente) model.getAttribute("novoCliente");
+    @RequestMapping(method = RequestMethod.POST, value = "/admin/clientes/criarNovo")
+    public String criarNovo(Cliente cliente, Model model) {
 
-        clienteService.salvar(cliente);
+        try {
 
-        model.addAttribute("mensagem", "Cliente salvo com sucesso");
+            clienteService.salvar(cliente);
+            model.addAttribute("mensagem", "Cliente salvo com sucesso");
+
+        } catch (NegocioException e) {
+            model.addAttribute("mensagem",
+                    "Erro: ".concat(e.getMessage()));
+        }
+
+        model.addAttribute("clientes", clienteService.listar());
         return "inicial";
 
     }
