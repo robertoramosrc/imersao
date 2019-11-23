@@ -1,11 +1,35 @@
 package br.com.tt.petshop.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TB_CLIENTE")
 public class Cliente {
 
+    @Id
+    @Column(name = "ID_CLIENTE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+
+    @Column
     private String nome;
+
+    @Column
     private String cpf;
+
+    @Column
     private String telefone;
+
+    @Column
     private String email;
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
 
     public String getTelefone() {
         return telefone;

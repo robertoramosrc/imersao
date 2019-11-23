@@ -1,9 +1,26 @@
 package br.com.tt.petshop.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="TB_UNIDADE")
 public class Unidade {
+
+    @Id
+    @Column(name = "ID_UNIDADE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+
+    @Column
     private String nome;
+
+    @Column
     private String endereco;
+
+    @Column
     private String telefone;
+
+    @Column
     private String cnpj;
 
     public String getTelefone() {
@@ -36,5 +53,13 @@ public class Unidade {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 }

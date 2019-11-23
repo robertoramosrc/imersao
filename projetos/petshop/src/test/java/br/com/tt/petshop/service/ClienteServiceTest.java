@@ -2,7 +2,6 @@ package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.model.Cliente;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ class ClienteServiceTest {
 
     @BeforeEach
     public void inicia(){
-        clienteService = new ClienteService();
+        clienteService = new ClienteService(clienteRepository);
 
     }
 

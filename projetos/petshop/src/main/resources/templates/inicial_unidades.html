@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu segundo teste na web!!!!!</title>
+</head>
+<body>
+<h3>Lista de Unidadess: </h3>
+<label th:text="${mensagem}"/>
+
+<ul>
+    <li th:each="uni : ${unidades}" th:text = "${uni.nome}"></li>
+</ul>
+
+<a th:href="@{/admin/unidades/criar}">Criar Nova</a>
+
+</body>
+</html>
