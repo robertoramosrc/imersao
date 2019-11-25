@@ -23,19 +23,19 @@ public class UnidadeController {
         model.addAttribute("mensagem", "Bem vindo a lista de Unidades da petshop");
         model.addAttribute("unidades", unidadeService.listar());
 
-        return "inicial";
+        return "unidade/unidades";
 
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/admin/unidades/criar")
-    public String UnidadeCriar(Model model) {
+    public String criar(Model model) {
 
         model.addAttribute("novaUnidade", new Unidade());
-        return "unidade_criar";
+        return "unidade/unidade_criar";
 
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/admin/unidades/criarNova")
+    @RequestMapping(method = RequestMethod.POST, value = "/admin/unidades/criarNovo")
     public String criarNova(Unidade unidade, Model model) {
 
         try {
@@ -48,8 +48,7 @@ public class UnidadeController {
                     "Erro: ".concat(e.getMessage()));
         }
 
-        model.addAttribute("unidades", unidadeService.listar());
-        return "inicial";
+        return this.listar(model);
 
     }
 

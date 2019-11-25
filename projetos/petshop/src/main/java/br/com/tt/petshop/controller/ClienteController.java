@@ -26,7 +26,7 @@ public class ClienteController {
         model.addAttribute("mensagem", "Bem vindo a lista de clientes da petshop");
         model.addAttribute("clientes", clienteService.listar());
 
-        return "inicial";
+        return "cliente/clientes";
 
     }
 
@@ -34,7 +34,7 @@ public class ClienteController {
     public String clienteCriar(Model model) {
 
         model.addAttribute("novoCliente", new Cliente());
-        return "cliente_criar";
+        return "cliente/cliente_criar";
 
     }
 
@@ -52,15 +52,7 @@ public class ClienteController {
         }
 
         model.addAttribute("clientes", clienteService.listar());
-        return "inicial";
-
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/admin/unidades")
-    public String filtrar(Model model) {
-
-        model.addAttribute("novoCliente", new Cliente());
-        return "cliente_criar";
+        return "cliente/clientes";
 
     }
 
