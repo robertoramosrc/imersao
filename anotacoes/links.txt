@@ -1,0 +1,15 @@
+@Desenv2
+https://maven.apache.org/what-is-maven.html
+web
+https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html
+https://mvnrepository.com/repos/central
+https://www.jetbrains.com/lp/devecosystem-2019/
+https://junit.org/junit5/
+https://learngitbranching.js.org/
+Spring and Hiber
+https://docs.jboss.org/hibernate/stable/annotations/reference/en/html_single/
+https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference
+https://start.spring.io/
+https://www.sourcetreeapp.com/
+http://lucianeborges.com/resumo-atraente-no-linkedin-com-impacto-empatia-e-engajamento/
+https://blog.cleancoder.com/
