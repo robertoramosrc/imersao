@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping
-public class inicialController {
+public class InicialController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/admin")
     public String inicial(){
