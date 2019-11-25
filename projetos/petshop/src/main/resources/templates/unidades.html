@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu segundo teste na web!!!!!</title>
+</head>
+<body>
+<h3>Lista de Unidadess: </h3>
+<label th:text="${mensagem}"/>
+
+<ul>
+    <li th:each="uni : ${unidades}" th:text = "${uni.nome}"></li>
+</ul>
+
+
+<form th:method="post" th:action = "@{/admin/unidades}">
+    <label>Filtrar Unidades por Nome: </label>
+    <input name="filtrarUnidades"><br>
+
+    <input type="submit" value="Filtrar" />
+
+</form>
+
+
+<a th:href="@{/admin/unidades/criar}">Criar Nova</a>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu primeiro teste na web!!!!!</title>
+</head>
+<body>
+    <h3>Lista de Clientes: </h3>
+    <label th:text="${mensagem}"/>
+
+    <ul>
+        <li th:each="cli : ${clientes}" th:text = "${cli.nome}"></li>
+    </ul>
+
+    <a th:href="@{/admin/clientes/criar}">Criar Novo</a>
+
+
+</body>
+</html>

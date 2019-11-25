@@ -56,5 +56,12 @@ public class ClienteController {
 
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/admin/unidades")
+    public String filtrar(Model model) {
+
+        model.addAttribute("novoCliente", new Cliente());
+        return "cliente_criar";
+
+    }
 
 }

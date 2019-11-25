@@ -2,18 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Meu primeiro teste na web!!!!!</title>
+    <title>Home</title>
 </head>
 <body>
-    <h3>Lista de Clientes: </h3>
-    <label th:text="${mensagem}"/>
 
-    <ul>
-        <li th:each="cli : ${clientes}" th:text = "${cli.nome}"></li>
-    </ul>
-
-    <a th:href="@{/admin/clientes/criar}">Criar Novo</a>
-
+<a th:href="@{/admin/unidades/criar}">incluir Unidade</a>
+<a th:href="@{/admin/clientes/criar}">Incluir Cliente</a>
 
 </body>
 </html>

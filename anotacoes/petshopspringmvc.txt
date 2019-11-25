@@ -1,0 +1,8 @@
+Criar Repository para a Unidade
+Criar Service para a Unidade
+Criar Controller para a Unidade
+Criar página unidade_criar.html para a unidade
+Criar página unidades.html para listar as unidades
+Renomear página inicial.html para o clientes.html
+Criar página inicial.html que terá os links de criar Unidade e criar Clientes
+Alterar página unidades.html para filtrar as unidades pelo nome (campo input+botao Filtrar)
