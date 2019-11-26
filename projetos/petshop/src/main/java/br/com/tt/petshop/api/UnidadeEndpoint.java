@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/unidades")
@@ -23,18 +24,28 @@ public class UnidadeEndpoint {
         return ResponseEntity.ok(this.unidadeService.listar());
     }
 
-    @GetMapping("/id")
-    public ResponseEntity<List<Unidade>> buscar(@PathVariable Long id){
-        return ResponseEntity.ok(null);
+    @GetMapping("/{id}")
+    public ResponseEntity<Unidade> buscar(@PathVariable Long id){
+
+        Optional<Unidade> unidade = this.unidadeService.listar(id);
+
+        if( unidade.isPresent() ){
+            return ResponseEntity.ok(unidade.get());
+        }else{
+            return ResponseEntity.ok(null);
+        }
+
     }
 
-    @PostMapping()
-    public ResponseEntity<List<Unidade>> salvar(@RequestBody Unidade unidade){
-        Unidade unidadeSalva = unidadeService.salvar(unidade);
-        Long idCriado = unidadeSalva.getId();
 
-        URI location = URI.create(String.format("/unidade/%d", idCriado));
-        return ResponseEntity.created(null).build();
+    @PostMapping
+    public ResponseEntity<List<Unidade>> salvar(@RequestBody List<Unidade> unidades){
+        for( Unidade unidade : unidades){
+            unidadeService.salvar(unidade);
+        }
+
+        URI location = URI.create("/unidades/");
+        return ResponseEntity.created(location).build();
     }
 
 }
