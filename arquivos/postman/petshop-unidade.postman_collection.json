@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "8d5d9c45-9dbc-49ec-b7a0-511eaf990433",
+		"name": "petshop/unidade",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/unidades",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/unidades",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"unidades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/unidades",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"nome\":\"Cristovao\",\n\t\"Endereco\":\"Rua Cristovao Colombo\",\n\t\"telefone\":\"(51) 1714 2212\",\n\t\"cnpj\":\"12554224442\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/unidades",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"unidades"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

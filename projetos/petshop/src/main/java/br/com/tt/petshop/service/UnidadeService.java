@@ -20,8 +20,8 @@ public class UnidadeService {
         return this.unidadeRepository.findAll();
     }
 
-    public void salvar(Unidade unidade) throws NegocioException {
-        this.unidadeRepository.save(unidade);
+    public Unidade salvar(Unidade unidade)  {
+        return this.unidadeRepository.save(unidade);  //hibernate faz automaticamente a atribuição do ID
     }
 
 }

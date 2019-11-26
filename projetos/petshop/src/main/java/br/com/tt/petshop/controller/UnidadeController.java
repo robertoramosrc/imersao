@@ -38,15 +38,8 @@ public class UnidadeController {
     @RequestMapping(method = RequestMethod.POST, value = "/admin/unidades/criarNovo")
     public String criarNova(Unidade unidade, Model model) {
 
-        try {
-
             unidadeService.salvar(unidade);
             model.addAttribute("mensagem", "Unidade salva com sucesso");
-
-        } catch (NegocioException e) {
-            model.addAttribute("mensagem",
-                    "Erro: ".concat(e.getMessage()));
-        }
 
         return this.listar(model);
 
