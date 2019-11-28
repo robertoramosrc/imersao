@@ -1,5 +1,6 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.exceptions.RegistroNaoExisteException;
 import br.com.tt.petshop.model.Unidade;
 import br.com.tt.petshop.repository.UnidadeRepository;
 import org.springframework.stereotype.Service;
@@ -24,14 +25,18 @@ public class UnidadeService {
         return this.unidadeRepository.save(unidade);  //hibernate faz automaticamente a atribuição do ID
     }
 
+    public void deletar(Long id){
 
-    public Optional<Unidade> listar(Long id){
-
-        return this.unidadeRepository.findById(id);
+        this.buscarPorId(id);
+        this.unidadeRepository.deleteById(id);
 
     }
 
+    public Unidade buscarPorId(Long id){
+        return this.unidadeRepository.findById(id)
+                .orElseThrow(()-> new RegistroNaoExisteException("Usuário não existe"));
 
+    }
 
 }
 

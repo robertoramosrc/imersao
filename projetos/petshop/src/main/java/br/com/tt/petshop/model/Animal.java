@@ -24,7 +24,6 @@ public class Animal {
     //@Transient
     //private boolean flag;
 
-
     public Long getId() {
         return id;
     }
