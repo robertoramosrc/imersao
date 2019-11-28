@@ -1,6 +1,7 @@
 package br.com.tt.petshop.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="TB_UNIDADE")
@@ -22,6 +23,9 @@ public class Unidade {
 
     @Column
     private String cnpj;
+
+    @OneToMany(mappedBy = "unidade")
+    private List<Cliente> clientes;
 
     public String getTelefone() {
         return telefone;
