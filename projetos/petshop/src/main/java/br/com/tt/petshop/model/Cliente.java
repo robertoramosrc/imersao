@@ -25,7 +25,7 @@ public class Cliente {
     @Column
     private String email;
 
-    @JsonIgnore
+    //@JsonIgnore....outra solução, não deixar nossa entidade chegar no endpoint
     @ManyToOne
     @JoinColumn(name = "ID_UNIDADE")
     private Unidade unidade;
