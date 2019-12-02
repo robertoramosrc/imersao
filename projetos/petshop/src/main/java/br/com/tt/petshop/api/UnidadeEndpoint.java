@@ -56,11 +56,10 @@ public class UnidadeEndpoint {
     @PostMapping
     public ResponseEntity salvar(@Valid @RequestBody UnidadeInDTO dto){
         Unidade unidade = mapper.map(dto, Unidade.class);
-        Unidade unidadeSalva = unidadeService.salvar(unidade);
 
-        //complementar em casa, colocar o id...
+        unidadeService.salvar(unidade);
 
-        URI location = URI.create("/unidades/");
+        URI location = URI.create(String.format("/unidades/%d", unidade.getId()));
         return ResponseEntity.created(location).build();
     }
 
