@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.temporal.TemporalUnit;
 
 
 public class AnimalServiceTest {
@@ -16,7 +15,7 @@ public class AnimalServiceTest {
 
     @BeforeEach
     public void iniciar(){
-        animalservice = new Animalservice();
+        animalservice = new Animalservice(animalRepository);
     }
 
 

@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/unidades")
-@Api(description = "API de unidades")
+@Api("API de unidades")
 public class UnidadeEndpoint {
 
     private final UnidadeService unidadeService;

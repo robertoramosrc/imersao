@@ -27,7 +27,6 @@ public class Animal {
     @JoinColumn(name = "ID_UNIDADE")
     private Unidade unidade;
 
-
     @ManyToOne
     @JoinColumn(name = "ID_CLIENTE")
     private Cliente cliente;
