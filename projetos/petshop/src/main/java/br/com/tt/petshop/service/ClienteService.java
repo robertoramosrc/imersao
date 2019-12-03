@@ -1,13 +1,18 @@
 package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.exceptions.NegocioException;
+import br.com.tt.petshop.exceptions.RegistroNaoExisteException;
 import br.com.tt.petshop.model.Cliente;
+import br.com.tt.petshop.model.Unidade;
 import br.com.tt.petshop.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Service
+@Validated //para usar o @notnull
 public class ClienteService {
     private static final int QTD_MINIMA_PARTES_NOME = 2;
     private static final int QTD_MINIMA_LETRAS_PRIMEIRO_NOME = 2;
@@ -21,6 +26,13 @@ public class ClienteService {
 
     public List<Cliente> listar() {
         return clienteRepository.findAll();
+    }
+
+    public Cliente buscarPorId(@NotNull(message = "ID do cliente obrigatório")
+                                       Long id){
+        return this.clienteRepository.findById(id)
+                .orElseThrow(()-> new RegistroNaoExisteException("Cliente não existe"));
+
     }
 
     public void salvar(Cliente cliente) throws NegocioException {

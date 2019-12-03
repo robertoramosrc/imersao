@@ -15,7 +15,7 @@ public class AnimalServiceTest {
 
     @BeforeEach
     public void iniciar(){
-        animalservice = new Animalservice(animalRepository);
+        animalservice = new Animalservice(mapper, unidadeService, clienteService, animalRepository);
     }
 
 

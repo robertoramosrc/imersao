@@ -15,8 +15,8 @@ public class AnimalOutDTO {
     private Long id;
     private String nome;
     private LocalDate dataNascimento;
-    private Unidade unidade;
-    private Cliente cliente;
+    private String unidade;
+    private String cliente;
 
     public Long getId() {
         return id;
@@ -40,5 +40,21 @@ public class AnimalOutDTO {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 }

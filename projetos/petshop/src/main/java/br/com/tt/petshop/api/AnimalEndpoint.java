@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -42,8 +43,13 @@ public class AnimalEndpoint {
 
     @GetMapping
     @ApiOperation("Retorna a lista de animais")
-    public ResponseEntity<List<AnimalOutDTO>> buscar() {
-        List<AnimalOutDTO> animais = this.animalservice.listar()
+    public ResponseEntity<List<AnimalOutDTO>> buscar(
+            //@RequestParam(required = false) String nome
+            @RequestParam("nome")Optional<String> nome,
+            @RequestParam("idUnidade")Optional<Long> idUnidade,
+            @RequestParam("idCliente")Optional<Long> idCliente)
+    {
+        List<AnimalOutDTO> animais = this.animalservice.listar(nome, idUnidade, idCliente)
                 .stream()
                 .map((animal) -> mapper.map(animal, AnimalOutDTO.class))
                 .collect(Collectors.toList());
@@ -52,19 +58,13 @@ public class AnimalEndpoint {
 
     }
 
-
     @PostMapping
     public ResponseEntity salvar(@Valid @RequestBody AnimalInDTO animalInDTO){
-        Animal animal = mapper.map(animalInDTO, Animal.class);
-
-        this.animalservice.salvar(animal);
-
+        Animal animal = this.animalservice.salvar(animalInDTO);
 
         URI locationOfNewAnimalCreated = URI.create(String.format("animais/%d", animal.getId()));
-
         return ResponseEntity.created(locationOfNewAnimalCreated).build();
 
     }
-
 
 }
