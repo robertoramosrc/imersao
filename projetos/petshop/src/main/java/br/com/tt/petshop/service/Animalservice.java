@@ -58,11 +58,16 @@ public class Animalservice {
 
     public List<Animal> listar(Optional<String> nome,
                                Optional<Long> idUnidade,
-                               Optional<Long> idCliente) {
+                               Optional<Long> idCliente,
+                               Optional<String> nomeLike) {
+
+
+        if (nomeLike.isPresent()) {
+            return this.animalRepository.buscarPorNome(nomeLike.get());
+        }
 
         Animal animal = new Animal();
-
-        nome.ifPresent(s->animal.setNome(s));  //com lambda
+        nome.ifPresent(s -> animal.setNome(s));  //com lambda
 
         if (idUnidade.isPresent()) {            //sem lambda
             Unidade unidade = new Unidade();
@@ -78,10 +83,6 @@ public class Animalservice {
 
         return animalRepository.findAll(Example.of(animal));
 
-//        if(nome.isPresent()) {
-//            return this.animalRepository.buscarPorNome(nome.get());
-//        }
-//        return this.animalRepository.findAll();
     }
 
     public Animal buscarPorId(Long id) {
@@ -89,10 +90,10 @@ public class Animalservice {
                 .orElseThrow(() -> new RegistroNaoExisteException("Animal não encontrado"));
     }
 
-    public void excluir(Long Id) {
-        this.animalRepository.delete(this.buscarPorId(Id));
+    public void excluir(Long id) {
+        this.buscarPorId(id);
+        this.animalRepository.deleteById(id);
     }
-
 
     private void validarDataDeNascimento(Animal animal) throws NegocioException {
 
