@@ -5,11 +5,13 @@ import br.com.tt.petshop.exceptions.RegistroNaoExisteException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.model.Unidade;
 import br.com.tt.petshop.repository.ClienteRepository;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Validated //para usar o @notnull
@@ -24,8 +26,18 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    public List<Cliente> listar() {
+    public List<Cliente> listar(Optional<String> nome, Optional<String> cpf) {
+
+        if(nome.isPresent() && cpf.isPresent()) {
+            return this.clienteRepository.buscarPorNomeCPF(nome.get(), cpf.get());
+        }else if(nome.isPresent()) {
+            return this.clienteRepository.buscarPorNome(nome.get());
+        }else if(cpf.isPresent()) {
+            return this.clienteRepository.buscarPorCPF(cpf.get());
+        }
+
         return clienteRepository.findAll();
+
     }
 
     public Cliente buscarPorId(@NotNull(message = "ID do cliente obrigatório")

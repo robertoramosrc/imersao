@@ -11,7 +11,7 @@ class ClienteServiceTest {
 
     @BeforeEach
     public void inicia(){
-        clienteService = new ClienteService(clienteRepository);
+        clienteService = new ClienteService(null);
 
     }
 
