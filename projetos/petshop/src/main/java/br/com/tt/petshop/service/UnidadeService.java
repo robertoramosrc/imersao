@@ -17,24 +17,24 @@ public class UnidadeService {
         this.unidadeRepository = unidadeRepository;
     }
 
-    public List<Unidade> listar(){
+    public List<Unidade> listar() {
         return this.unidadeRepository.findAll();
     }
 
-    public Unidade salvar(Unidade unidade)  {
+    public Unidade salvar(Unidade unidade) {
         return this.unidadeRepository.save(unidade);  //hibernate faz automaticamente a atribuição do ID
     }
 
-    public void deletar(Long id){
+    public void deletar(Long id) {
 
         this.buscarPorId(id);
         this.unidadeRepository.deleteById(id);
 
     }
 
-    public Unidade buscarPorId(Long id){
+    public Unidade buscarPorId(Long id) {
         return this.unidadeRepository.findById(id)
-                .orElseThrow(()-> new RegistroNaoExisteException("Usuário não existe"));
+                .orElseThrow(() -> new RegistroNaoExisteException("Usuário não existe"));
 
     }
 
