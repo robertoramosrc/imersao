@@ -2,12 +2,10 @@ package br.com.tt.petshop.api;
 
 import br.com.tt.petshop.dto.AnimalInDTO;
 import br.com.tt.petshop.dto.AnimalOutDTO;
-import br.com.tt.petshop.model.Animal;
-import br.com.tt.petshop.service.Animalservice;
+import br.com.tt.petshop.service.AnimalService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,10 +19,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/animais")
 public class AnimalEndpoint {
 
-    private final Animalservice animalservice;
+    private final AnimalService animalservice;
     private final ModelMapper mapper;
 
-    public AnimalEndpoint(Animalservice animalservice, ModelMapper mapper) {
+    public AnimalEndpoint(AnimalService animalservice, ModelMapper mapper) {
         this.animalservice = animalservice;
         this.mapper = mapper;
     }

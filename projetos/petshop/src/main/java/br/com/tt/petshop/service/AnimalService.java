@@ -6,6 +6,7 @@ import br.com.tt.petshop.exceptions.RegistroNaoExisteException;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.model.Unidade;
+import br.com.tt.petshop.model.projection.AnimalProjection;
 import br.com.tt.petshop.repository.AnimalRepository;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Animalservice {
+public class AnimalService {
 
     private final ModelMapper mapper;
     private final UnidadeService unidadeService;
@@ -27,7 +28,7 @@ public class Animalservice {
     //List<Animal> animais = new ArrayList<Animal>();
 
 
-    public Animalservice(ModelMapper mapper, UnidadeService unidadeService, ClienteService clienteService, AnimalRepository animalRepository) {
+    public AnimalService(ModelMapper mapper, UnidadeService unidadeService, ClienteService clienteService, AnimalRepository animalRepository) {
         this.mapper = mapper;
         this.unidadeService = unidadeService;
         this.clienteService = clienteService;
@@ -101,6 +102,10 @@ public class Animalservice {
             throw new NegocioException("A data de nascimento do animal não pode ser maior que hoje");
         }
 
+    }
+
+    public List<AnimalProjection> listarParaRelatorio() {
+        return this.animalRepository.findAllOrderByNome();
     }
 
 }

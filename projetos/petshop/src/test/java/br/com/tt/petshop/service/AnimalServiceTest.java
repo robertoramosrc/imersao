@@ -2,7 +2,6 @@ package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.model.Animal;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,11 +10,11 @@ import java.time.LocalDate;
 
 public class AnimalServiceTest {
 
-    Animalservice animalservice;
+    AnimalService animalservice;
 
     @BeforeEach
     public void iniciar(){
-        animalservice = new Animalservice(null, null, null, null);
+        animalservice = new AnimalService(null, null, null, null);
     }
 
 
