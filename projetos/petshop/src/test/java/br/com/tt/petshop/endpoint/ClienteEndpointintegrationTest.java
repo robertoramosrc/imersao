@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
@@ -27,6 +28,8 @@ import java.util.Optional;
 @WebMvcTest(controllers = ClienteEndpoint.class)
 @ExtendWith(SpringExtension.class)
 @Import(ModelMappingConfig.class)  //não mockado por ser complexo
+@ActiveProfiles("test") //alternativa ao -D... como parametro na inicialização da VM
+
 public class ClienteEndpointintegrationTest {
 
     public static final Matcher<String> IS_JOAZINHO = CoreMatchers.is("Joaozinho");
@@ -62,7 +65,6 @@ public class ClienteEndpointintegrationTest {
         Mockito.doReturn(Arrays.asList(cliente))
                 .when(this.clienteService).listar(Optional.empty(),
                                                  Optional.empty());
-
         mockMvc
                 .perform(MockMvcRequestBuilders.get("/clientes"))
                 .andExpect(HTTP_STATUS_OK)
@@ -73,7 +75,5 @@ public class ClienteEndpointintegrationTest {
                 .andDo(MockMvcResultHandlers.print());
 
     }
-
-
 
 }

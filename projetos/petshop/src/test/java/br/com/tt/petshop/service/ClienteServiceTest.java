@@ -1,13 +1,23 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.client.SituacaoCreditoClient;
 import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.model.Cliente;
+import br.com.tt.petshop.repository.ClienteRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 class ClienteServiceTest {
+
     private ClienteService clienteService;
+
+    @Mock
+    private ClienteRepository repository;
+
+    @Mock
+    private SituacaoCreditoClient situacaoCreditoClient;
 
     @BeforeEach
     public void inicia(){
