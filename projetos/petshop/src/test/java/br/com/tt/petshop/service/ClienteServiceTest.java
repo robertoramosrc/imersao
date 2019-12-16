@@ -10,9 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 class ClienteServiceTest {
-
     private ClienteService clienteService;
-
     @Mock
     private ClienteRepository repository;
 
@@ -20,7 +18,7 @@ class ClienteServiceTest {
     private SituacaoCreditoClient situacaoCreditoClient;
 
     @BeforeEach
-    public void inicia(){
+    public void inicia() {
         clienteService = new ClienteService(null, situacaoCreditoClient);
 
     }
@@ -36,14 +34,14 @@ class ClienteServiceTest {
     }
 
     @Test
-    public void deveriaFalharComNomeSobrenome(){
+    public void deveriaFalharComNomeSobrenome() {
         Cliente novoCliente = new Cliente();
         novoCliente.setCpf("123.123.123-11");
         novoCliente.setNome("Fulano");
 
         NegocioException e = Assertions.assertThrows(
                 NegocioException.class,
-                ()-> clienteService.salvar(novoCliente));
+                () -> clienteService.salvar(novoCliente));
 
         Assertions.assertEquals(
                 "O nome da pessoa deve ser composto de no mínimo 2 partes.",
@@ -52,7 +50,7 @@ class ClienteServiceTest {
     }
 
     @Test
-    public void deveriaFalharComCpfMenorQue11(){
+    public void deveriaFalharComCpfMenorQue11() {
         Cliente novoCliente = new Cliente();
         novoCliente.setNome("Fulano Silva");
 
@@ -68,7 +66,7 @@ class ClienteServiceTest {
     }
 
     @Test
-    public void deveriaFalharComCpfMaiorQue11(){
+    public void deveriaFalharComCpfMaiorQue11() {
         Cliente novoCliente = new Cliente();
 
         novoCliente.setNome("Fulano Silva");
@@ -84,7 +82,7 @@ class ClienteServiceTest {
     }
 
     @Test
-    public void deveriaFalharConsiderandoFormatacao(){
+    public void deveriaFalharConsiderandoFormatacao() {
         Cliente novoCliente = new Cliente();
 
         novoCliente.setNome("Fulano Silva");
@@ -101,7 +99,7 @@ class ClienteServiceTest {
     }
 
     @Test
-    public void deveriaFalharNomeComParticularMenorQue2(){
+    public void deveriaFalharNomeComParticularMenorQue2() {
         Cliente novoCliente = new Cliente();
 
         novoCliente.setNome("F. d Silva");
@@ -116,6 +114,6 @@ class ClienteServiceTest {
 
     }
 
+}
 
 
-    }
